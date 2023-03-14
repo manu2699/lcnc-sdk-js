@@ -11,34 +11,22 @@ export class NDEFReader extends BaseSDK {
 		super();
 		this.id = generateId(CMDS.WINDOW_NDEF_READER_NEW);
 		globalInstances[this.id] = this;
-		this._postMessage(
-			CMDS.WINDOW_NDEF_READER_NEW,
-			{
-				id: this.id,
-				operation: "new"
-			},
-			(data: any) => {}
-		);
-	}
-	scan() {
-		return new Promise((resolve, reject) => {
-			this._postMessage(
-				CMDS.WINDOW_NDEF_READER_SCAN,
-				{ id: this.id, operation: "scan" },
-				({ data, err }) => {
-					console.log("scan data from main window ", data);
-					resolve(data);
-				}
-			);
+		this._postMessageAsync(CMDS.WINDOW_NDEF_READER_NEW, {
+			id: this.id,
+			operation: "new"
 		});
 	}
+	scan() {
+		this._postMessageAsync(
+			CMDS.WINDOW_NDEF_READER_SCAN,
+			{ id: this.id, operation: "scan" }
+		);
+	}
 	write(data) {
-		return new Promise((resolve, reject) => {
-			this._postMessage(
-				CMDS.WINDOW_NDEF_READER_WRITE,
-				{ id: this.id, operation: "write", data },
-				({ data, err }) => {}
-			);
+		this._postMessageAsync(CMDS.WINDOW_NDEF_READER_WRITE, {
+			id: this.id,
+			operation: "write",
+			data
 		});
 	}
 
@@ -50,27 +38,23 @@ export class NDEFReader extends BaseSDK {
 				operation: "addEventListener",
 				eventName
 			},
-			() => {}
+			cb
 		);
 	}
 
 	makeReadOnly() {
-		return new Promise((resolve, reject) => {
-			this._postMessage(
-				CMDS.WINDOW_NDEF_READER_MAKE_READONLY,
-				{ id: this.id, operation: "makeReadOnly" },
-				({ data, err }) => {}
-			);
+		this._postMessageAsync(CMDS.WINDOW_NDEF_READER_MAKE_READONLY, {
+			id: this.id,
+			operation: "makeReadOnly"
 		});
 	}
 
 	abortScan() {
-		return new Promise((resolve, reject) => {
-			this._postMessage(
-				CMDS.WINDOW_NDEF_READER_ABORT_SCAN,
-				{ id: this.id, operation: "abortScan" },
-				({ data, err }) => {}
-			);
-		});
+		this._postMessageAsync(
+			CMDS.WINDOW_NDEF_READER_ABORT_SCAN,
+			{ id: this.id, operation: "abortScan" },
+			true,
+			(data) => data
+		);
 	}
 }
