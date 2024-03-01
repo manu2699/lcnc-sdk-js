@@ -3,9 +3,35 @@ title: getVariable()
 description: Retrieve value of variable.
 ---
 
-Reference pages are ideal for outlining how things work in terse and clear terms.
-Less concerned with telling a story or addressing a specific use case, they should give a comprehensive outline of what you're documenting.
+To retrieve the value of an application variable.
 
-## Further reading
+-   Application variables are similar to variables in any programming language, with a scope spanning the entire user session within the application. 
 
-- Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
+-   Users can set variable values in pages, forms, or custom components, and retrieve it from other pages, forms, or custom components within the same application. 
+
+:::note[Note] 
+Value of application variable are stored on local machine of the user and
+    they are always persisted, even if the application reloaded.
+:::
+### Parameters
+
+| Parameters | type   |
+| ---------- | ------ |
+| variableId | String |
+
+### Syntax
+
+```js
+const appVariable1 = await kf.app.getVariable("variableId");
+```
+
+### Returns
+
+Returns the value of the variable, with data type corresponding to the variable type.
+
+| Variable type | Data type |
+| ------------- | --------- |
+| Text          | String    |
+| Number        | Integer   |
+| DateTime      | String    |
+| Boolean       | Boolean   |

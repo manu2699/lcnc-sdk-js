@@ -33,6 +33,10 @@ export default defineConfig({
 				{
 					label: "Application",
 					autogenerate: { directory: "app" }
+				},
+				{
+					label: "Formatter",
+					link: "/formatter"
 				}
 			]
 		})
