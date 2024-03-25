@@ -6,12 +6,22 @@ on:
       - doc-v*
 
 jobs:
+  logging: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Log the event path
+        run: echo "Event path is ${{github.event_path}}"
+
   build-and-deploy-docs:
     if: ${{ github.event_path == 'docs/package.json' }}
     runs-on: ubuntu-latest
       
     steps:
-      - name: Checkout docs repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Log docs repository
         run: echo "Docs changes ${{github.event_path}}"
         
 
@@ -20,7 +30,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout sdk repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Log sdk repository
         run: echo "SDK changes ${{github.event_path}}"
 
   build-and-publish-create-component:
@@ -28,5 +40,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout scaffold repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Log scaffold repository
         run: echo "scaffold changes ${{github.event_path}}"
