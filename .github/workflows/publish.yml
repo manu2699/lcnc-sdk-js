@@ -12,35 +12,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Log the event path
-        run: echo "Event path is ${{github.event_path}}"
+        run: echo "Event path is ${{github.workspace}}"
 
   build-and-deploy-docs:
-    if: ${{ github.event_path == 'docs/package.json' }}
+    if: ${{ github.workspace == 'docs' }}
     runs-on: ubuntu-latest
       
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Log docs repository
-        run: echo "Docs changes ${{github.event_path}}"
+        run: echo "Docs changes ${{github.workspace}}"
         
 
   build-and-publish-sdk:
-    if: ${{ github.event_path == 'package/sdk/package.json' }}
+    if: ${{ github.workspace == 'package/sdk/package.json' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Log sdk repository
-        run: echo "SDK changes ${{github.event_path}}"
+        run: echo "SDK changes ${{github.workspace}}"
 
   build-and-publish-create-component:
-    if: ${{ github.event_path == 'package/create-component/package.json' }}
+    if: ${{ github.workspace == 'package/create-component/package.json' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Log scaffold repository
-        run: echo "scaffold changes ${{github.event_path}}"
+        run: echo "scaffold changes ${{github.workspace}}"
