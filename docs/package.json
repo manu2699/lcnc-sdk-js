@@ -6,8 +6,8 @@
     "astro": "astro",
     "dev": "astro dev",
     "preview": "astro preview",
-    "start": "astro dev",
-    "build": "astro build"
+    "build": "astro build",
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.16.0",
