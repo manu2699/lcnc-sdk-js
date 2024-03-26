@@ -25,6 +25,7 @@
 	--kf-color-gray-900: #cbcdcd;
 	--kf-color-gray-999: #d6d9d9;
 }
+
 /* Light mode colors. */
 :root[data-theme='light'] {
 	--sl-color-accent-low: #002157;
@@ -51,7 +52,6 @@
   --kf-color-gray-800: #454a52;
   --kf-color-gray-900: #292b2f;
   --kf-color-gray-999: #151617;
-
 }
 
 .starlight-aside--note {
@@ -62,7 +62,7 @@
 
 .site-title{
 	gap: 4px;
-	height: 20px;
+	height: 24px;
 }
 
 .site-title span{
