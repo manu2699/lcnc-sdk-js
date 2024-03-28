@@ -8,9 +8,9 @@
     "create-kf-component": "index.js"
   },
   "files": [
+    "bin",
     "index.js",
-    "template/**/*",
-    "bin"
+    "template/**/*"
   ],
   "scripts": {
     "build": "unbuild"
